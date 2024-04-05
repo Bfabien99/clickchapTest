@@ -1,4 +1,3 @@
-import 'package:clickchap_new/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 button(String label, Icon icon, Color buttonColor, Color textColor,
@@ -10,5 +9,7 @@ button(String label, Icon icon, Color buttonColor, Color textColor,
         label,
         textAlign: TextAlign.center,
         style: TextStyle(color: textColor),
-      ));
+      ),
+    );
 }
+
