@@ -7,7 +7,7 @@ drawer(BuildContext context) {
     child: ListView(
       children: [
         Container(
-          margin: EdgeInsets.only(top: 10),
+          margin: const EdgeInsets.only(top: 10),
           padding: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
             color: splashColor,
@@ -18,18 +18,31 @@ drawer(BuildContext context) {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Kaboré Abdoul Mahamoudou", textAlign: TextAlign.center,),
-              SizedBox(height: 20,),
-              listTileRender(Text('Historiques'), Icon(Icons.history), 18,
-                  primaryColor, primaryColor, true, () {}),
-              listTileRender(Text('Commandes'), Icon(Icons.shopping_cart_checkout), 18,
-                  primaryColor, primaryColor, true, () {}),
-              listTileRender(Text('Marchands'), Icon(Icons.sell), 18,
-                  primaryColor, primaryColor, false, () {}),
+              const Text(
+                "Kaboré Abdoul Mahamoudou",
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              listTileRender(const Text('Historiques'), const Icon(Icons.history), 18,
+                  primaryColor, primaryColor, true, taped),
+              listTileRender(
+                  const Text('Commandes'),
+                  const Icon(Icons.shopping_cart_checkout),
+                  18,
+                  primaryColor,
+                  primaryColor,
+                  true,
+                  taped),
+              listTileRender(const Text('Marchands'), const Icon(Icons.sell), 18,
+                  primaryColor, primaryColor, false, taped),
             ],
           ),
         ),
-        SizedBox(height: 10,),
+        const SizedBox(
+          height: 10,
+        ),
         Container(
           padding: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
@@ -40,16 +53,18 @@ drawer(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              listTileRender(Text('Profil'), Icon(Icons.person), 18,
-                  primaryColor, primaryColor, true, () {}),
-              listTileRender(Text('Compte'), Icon(Icons.settings), 18,
-                  primaryColor, primaryColor, true, () {}),
-              listTileRender(Text('A Propos'), Icon(Icons.help), 18,
-                  primaryColor, primaryColor, false, () {}),
+              listTileRender(const Text('Profil'), const Icon(Icons.person), 18,
+                  primaryColor, primaryColor, true, taped),
+              listTileRender(const Text('Compte'), const Icon(Icons.settings), 18,
+                  primaryColor, primaryColor, true, taped),
+              listTileRender(const Text('A Propos'), const Icon(Icons.help), 18,
+                  primaryColor, primaryColor, false, taped),
             ],
           ),
         ),
-        SizedBox(height: 10,),
+        const SizedBox(
+          height: 10,
+        ),
         Container(
           padding: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
@@ -61,10 +76,10 @@ drawer(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              listTileRender(Text('Deconnecter'), Icon(Icons.logout), 18,
-                  primaryColor, primaryColor, true, () {}),
-              listTileRender(Text('Laisser un Like'), Icon(Icons.logo_dev), 18,
-                  primaryColor, primaryColor, false, () {}),
+              listTileRender(const Text('Deconnecter'), const Icon(Icons.logout), 18,
+                  primaryColor, primaryColor, true, taped),
+              listTileRender(const Text('Laisser un Like'), const Icon(Icons.logo_dev), 18,
+                  primaryColor, primaryColor, false, taped),
             ],
           ),
         ),
@@ -74,7 +89,7 @@ drawer(BuildContext context) {
 }
 
 listTileRender(Text text, Icon icon, double size, Color iconColor,
-    Color textColor, bool? divider, Function? Function() onTap) {
+    Color textColor, bool? divider, void Function()? onTap) {
   return Column(
     children: [
       ListTile(
@@ -85,7 +100,16 @@ listTileRender(Text text, Icon icon, double size, Color iconColor,
         title: text,
         onTap: onTap,
       ),
-      divider! ? Divider(height: 2, color: Colors.grey[20],) : SizedBox.shrink(),
+      divider!
+          ? Divider(
+              height: 2,
+              color: Colors.grey[20],
+            )
+          : const SizedBox.shrink(),
     ],
   );
+}
+
+taped(){
+  return true;
 }

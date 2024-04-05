@@ -1,4 +1,3 @@
-import 'package:clickchap_new/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 appBar(String title, Color backgroundColor, Color textColor){
