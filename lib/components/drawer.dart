@@ -1,4 +1,6 @@
+import 'package:clickchap_new/components/my_snackbar.dart';
 import 'package:clickchap_new/constants/colors.dart';
+import 'package:clickchap_new/services/page_navigation.dart';
 import 'package:flutter/material.dart';
 
 drawer(BuildContext context) {
@@ -25,8 +27,14 @@ drawer(BuildContext context) {
               const SizedBox(
                 height: 20,
               ),
-              listTileRender(const Text('Historiques'), const Icon(Icons.history), 18,
-                  primaryColor, primaryColor, true, taped),
+              listTileRender(
+                  const Text('Historiques'),
+                  const Icon(Icons.history),
+                  18,
+                  primaryColor,
+                  primaryColor,
+                  true,
+                  () => navigateTo(context, '/history')),
               listTileRender(
                   const Text('Commandes'),
                   const Icon(Icons.shopping_cart_checkout),
@@ -34,9 +42,15 @@ drawer(BuildContext context) {
                   primaryColor,
                   primaryColor,
                   true,
-                  taped),
-              listTileRender(const Text('Marchands'), const Icon(Icons.sell), 18,
-                  primaryColor, primaryColor, false, taped),
+                  () => navigateTo(context, '/orders')),
+              listTileRender(
+                  const Text('Marchands'),
+                  const Icon(Icons.sell),
+                  18,
+                  primaryColor,
+                  primaryColor,
+                  false,
+                  () => navigateTo(context, '/merchants')),
             ],
           ),
         ),
@@ -53,12 +67,30 @@ drawer(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              listTileRender(const Text('Profil'), const Icon(Icons.person), 18,
-                  primaryColor, primaryColor, true, taped),
-              listTileRender(const Text('Compte'), const Icon(Icons.settings), 18,
-                  primaryColor, primaryColor, true, taped),
-              listTileRender(const Text('A Propos'), const Icon(Icons.help), 18,
-                  primaryColor, primaryColor, false, taped),
+              listTileRender(
+                  const Text('Profil'),
+                  const Icon(Icons.person),
+                  18,
+                  primaryColor,
+                  primaryColor,
+                  true,
+                  () => navigateTo(context, '/profil')),
+              listTileRender(
+                  const Text('Compte'),
+                  const Icon(Icons.settings),
+                  18,
+                  primaryColor,
+                  primaryColor,
+                  true,
+                  () => navigateTo(context, '/account')),
+              listTileRender(
+                  const Text('A Propos'),
+                  const Icon(Icons.help),
+                  18,
+                  primaryColor,
+                  primaryColor,
+                  false,
+                  () => navigateTo(context, '/about')),
             ],
           ),
         ),
@@ -76,10 +108,22 @@ drawer(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              listTileRender(const Text('Deconnecter'), const Icon(Icons.logout), 18,
-                  primaryColor, primaryColor, true, taped),
-              listTileRender(const Text('Laisser un Like'), const Icon(Icons.logo_dev), 18,
-                  primaryColor, primaryColor, false, taped),
+              listTileRender(
+                  const Text('Deconnecter'),
+                  const Icon(Icons.logout),
+                  18,
+                  primaryColor,
+                  primaryColor,
+                  true,
+                  () => navigateTo(context, '/login')),
+              listTileRender(
+                  const Text('Laisser un Like'),
+                  const Icon(Icons.logo_dev),
+                  18,
+                  primaryColor,
+                  primaryColor,
+                  false,
+                  ()=>showSuccessMessage(context, 'Liked +1')),
             ],
           ),
         ),
@@ -108,8 +152,4 @@ listTileRender(Text text, Icon icon, double size, Color iconColor,
           : const SizedBox.shrink(),
     ],
   );
-}
-
-taped(){
-  return true;
 }

@@ -3,6 +3,7 @@
 import 'package:clickchap_new/components/buttons.dart';
 import 'package:clickchap_new/constants/colors.dart';
 import 'package:clickchap_new/components/my_snackbar.dart';
+import 'package:clickchap_new/services/page_navigation.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -212,6 +213,13 @@ class _SignupScreenState extends State<SignupScreen> {
                           primaryColor,
                           secondaryColor,
                           validateForm),
+                Row(children: [
+                    Text('Déjà un compte? '),
+                    InkWell(
+                      child: Text("Connectez vous!"),
+                      onTap: () => navigateTo(context, '/login') ,
+                    )
+                  ],),
                 ],
               ),
             ),
@@ -267,6 +275,7 @@ class _SignupScreenState extends State<SignupScreen> {
     setState(() {
       isSubmitted = false;
     });
+    navigateToR(context, '/login');
     // REDIRIGER VERS LA PAGE DE LOGIN
     return;
   }

@@ -1,6 +1,7 @@
 import 'package:clickchap_new/components/buttons.dart';
 import 'package:clickchap_new/components/my_snackbar.dart';
 import 'package:clickchap_new/constants/colors.dart';
+import 'package:clickchap_new/services/page_navigation.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -99,6 +100,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           )
                         : button('Connexion', const Icon(Icons.login_outlined),
                             primaryColor, secondaryColor, validateForm),
+                  Row(children: [
+                    Text('Pas de compte? '),
+                    InkWell(
+                      child: Text("Incrivez vous!"),
+                      onTap: ()=> navigateTo(context, '/signup') ,
+                    )
+                  ],),
                   ],
                 ),
               ),
@@ -136,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
       isSubmitted = false;
     });
     // REDIRIGER VERS LA PAGE DE LOGIN
-    return;
+    navigateToR(context, '/dashboard');
   }
 
   // VERIFIER SI LA VARIABLE N'EST PAS VIDE

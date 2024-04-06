@@ -2,7 +2,6 @@
 
 import 'package:clickchap_new/components/buttons.dart';
 import 'package:clickchap_new/constants/colors.dart';
-import 'package:clickchap_new/screens/signup_screen.dart';
 import 'package:clickchap_new/services/page_navigation.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             SizedBox(height: 100,),
             button('Go', const Icon(Icons.start, color: secondaryColor,), primaryColor, secondaryColor,() {
-              navigateToR(context, SignupScreen());
+              navigateToR(context, '/login');
              })
           ],
         ),
