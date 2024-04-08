@@ -115,7 +115,7 @@ drawer(BuildContext context) {
                   primaryColor,
                   primaryColor,
                   true,
-                  () => navigateTo(context, '/login')),
+                  () => navigateToR(context, '/login')),
               listTileRender(
                   const Text('Laisser un Like'),
                   const Icon(Icons.logo_dev),
