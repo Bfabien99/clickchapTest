@@ -22,4 +22,5 @@ Map<String, Widget Function(BuildContext)> myRoutes =
   '/profil' : (context) => ProfilScreen(),
   '/account' : (context) => AccountScreen(),
   '/about' : (context) => AboutScreen(),
+  '/nowifi' : (context) => AboutScreen(),
 };

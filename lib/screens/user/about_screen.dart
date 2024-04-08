@@ -4,6 +4,7 @@ import 'package:clickchap_new/components/appBar.dart';
 import 'package:clickchap_new/components/drawer.dart';
 import 'package:clickchap_new/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:clickchap_new/services/connectivity.dart';
 
 class AboutScreen extends StatefulWidget {
   const AboutScreen({ Key? key }) : super(key: key);
@@ -13,6 +14,14 @@ class AboutScreen extends StatefulWidget {
 }
 
 class _AboutScreenState extends State<AboutScreen> {
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isConnected(context);
+  }
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(

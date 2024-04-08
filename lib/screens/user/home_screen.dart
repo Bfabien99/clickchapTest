@@ -3,6 +3,7 @@
 import 'package:clickchap_new/components/appBar.dart';
 import 'package:clickchap_new/components/drawer.dart';
 import 'package:clickchap_new/constants/colors.dart';
+import 'package:clickchap_new/services/connectivity.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,6 +14,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isConnected(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
