@@ -2,8 +2,11 @@ import 'package:clickchap_new/components/my_snackbar.dart';
 import 'package:clickchap_new/constants/colors.dart';
 import 'package:clickchap_new/services/page_navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 drawer(BuildContext context) {
+  final localStorage = Hive.box('localStorage');
+  final user = localStorage.get('user');
   return Drawer(
     backgroundColor: Colors.grey[100],
     child: ListView(
@@ -20,13 +23,21 @@ drawer(BuildContext context) {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                "Kaboré Abdoul Mahamoudou",
+               Text(
+                user['name'],
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 20,
               ),
+              listTileRender(
+                  const Text('Home'),
+                  const Icon(Icons.dashboard),
+                  18,
+                  primaryColor,
+                  primaryColor,
+                  true,
+                  () => navigateTo(context, '/dashboard')),
               listTileRender(
                   const Text('Historiques'),
                   const Icon(Icons.history),
@@ -51,6 +62,14 @@ drawer(BuildContext context) {
                   primaryColor,
                   false,
                   () => navigateTo(context, '/merchants')),
+                  listTileRender(
+                  const Text('Restart'),
+                  const Icon(Icons.restart_alt),
+                  18,
+                  primaryColor,
+                  primaryColor,
+                  false,
+                  () => navigateToR(context, '/home')),
             ],
           ),
         ),

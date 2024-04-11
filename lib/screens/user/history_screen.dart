@@ -19,7 +19,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    isConnected(context);
+    //isConnected(context);
   }
 
   @override

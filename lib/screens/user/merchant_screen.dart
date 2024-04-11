@@ -19,7 +19,7 @@ class _MerchantScreenState extends State<MerchantScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    isConnected(context);
+    //isConnected(context);
   }
 
   @override

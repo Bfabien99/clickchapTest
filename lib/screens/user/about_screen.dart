@@ -4,7 +4,7 @@ import 'package:clickchap_new/components/appBar.dart';
 import 'package:clickchap_new/components/drawer.dart';
 import 'package:clickchap_new/constants/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:clickchap_new/services/connectivity.dart';
+import 'package:flutter_lorem/flutter_lorem.dart';
 
 class AboutScreen extends StatefulWidget {
   const AboutScreen({ Key? key }) : super(key: key);
@@ -19,7 +19,7 @@ class _AboutScreenState extends State<AboutScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    isConnected(context);
+    //isConnected(context);
   }
   
   @override
@@ -30,9 +30,16 @@ class _AboutScreenState extends State<AboutScreen> {
           drawer: drawer(context),
           backgroundColor: Colors.grey[80],
           body: Container(
+            padding: EdgeInsets.all(20),
+            width: MediaQuery.of(context).size.width,
             child: SingleChildScrollView(
               child: Column(
-                
+                children: [
+                  CircleAvatar(backgroundImage: AssetImage('assets/logo1.png'), radius: 80,),
+                  SizedBox(height: 20,),
+                  Text('Lorem Ipsum', style: TextStyle(color: errorColor),),
+                  Text(lorem(paragraphs: 4, words: 200)),
+                ],
               ),
             ),
           ),

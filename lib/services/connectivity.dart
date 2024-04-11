@@ -7,10 +7,10 @@ isConnected(BuildContext context){
   final listener = InternetConnection().onStatusChange.listen((InternetStatus status) {
   switch (status) {
     case InternetStatus.connected:
-      print('Is connected');
+      print('connected');
       break;
     case InternetStatus.disconnected:
-      navigateToR(context, '/nowifi');
+      navigateTo(context, '/nowifi');
       break;
   }
 });

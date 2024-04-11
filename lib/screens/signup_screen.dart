@@ -3,8 +3,10 @@
 import 'package:clickchap_new/components/buttons.dart';
 import 'package:clickchap_new/constants/colors.dart';
 import 'package:clickchap_new/components/my_snackbar.dart';
+import 'package:clickchap_new/services/api_call.dart';
 import 'package:clickchap_new/services/page_navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -35,13 +37,31 @@ class _SignupScreenState extends State<SignupScreen> {
         backgroundColor: bgColor,
         // ignore: sized_box_for_whitespace
         body: Container(
+          padding: const EdgeInsets.all(10),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              repeat: ImageRepeat.repeat,
+              opacity: 1,
+              image: Svg(
+                'assets/i-like-food.svg',
+                size: Size(10, 10),
+              ),
+              colorFilter: ColorFilter.mode(
+                svgBgColor,
+                BlendMode.srcIn,
+              ),
+            ),
+          ),
           width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(40.0),
               child: Column(
                 children: [
                   const CircleAvatar(
+                    backgroundImage: AssetImage('assets/logo1.png'),
+                    backgroundColor: logoBgColor,
                     radius: 40,
                   ),
 
@@ -94,7 +114,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     isVisible = !isVisible;
                                   });
                                 },
-                                icon: !isVisible
+                                icon: isVisible
                                     ? const Icon(Icons.visibility)
                                     : const Icon(Icons.visibility_off)),
                             icon: const Icon(color: primaryColor, Icons.lock),
@@ -172,10 +192,13 @@ class _SignupScreenState extends State<SignupScreen> {
                               });
                             },
                           ),
-                          
-                          Text('Homme', style: TextStyle(
-                            color: (gender == 'H') ? primaryColor : secondaryColor
-                          ),),
+                          Text(
+                            'Homme',
+                            style: TextStyle(
+                                color: (gender == 'H')
+                                    ? primaryColor
+                                    : secondaryColor),
+                          ),
                         ],
                       ),
                       Row(
@@ -192,10 +215,13 @@ class _SignupScreenState extends State<SignupScreen> {
                               });
                             },
                           ),
-                          
-                          Text('Femme', style: TextStyle(
-                            color: (gender == 'F') ? primaryColor : secondaryColor
-                          ),),
+                          Text(
+                            'Femme',
+                            style: TextStyle(
+                                color: (gender == 'F')
+                                    ? primaryColor
+                                    : secondaryColor),
+                          ),
                         ],
                       ),
                     ],
@@ -213,13 +239,18 @@ class _SignupScreenState extends State<SignupScreen> {
                           primaryColor,
                           secondaryColor,
                           validateForm),
-                Row(children: [
-                    Text('Déjà un compte? '),
-                    InkWell(
-                      child: Text("Connectez vous!"),
-                      onTap: () => navigateTo(context, '/login') ,
-                    )
-                  ],),
+                  SizedBox(height: 10,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('Déjà un compte? '),
+                      InkWell(
+                        child: Text("Connectez vous!"),
+                        onTap: () => navigateTo(context, '/login'),
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -231,7 +262,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   /// MES FONCTIONS
   // SOUMETTRE LE FORMULAIRE
-  void validateForm() {
+  void validateForm() async {
     setState(() {
       isSubmitted = true;
     });
@@ -256,7 +287,7 @@ class _SignupScreenState extends State<SignupScreen> {
     }
 
     /// VERIFIER SI LES MOTS DE PASSE CORRESPONDENT
-    if(sPassword != sCPassword){
+    if (sPassword != sCPassword) {
       showErrorMessage(context, "Le mot de passe ne correspond pas!");
       setState(() {
         isSubmitted = false;
@@ -264,20 +295,55 @@ class _SignupScreenState extends State<SignupScreen> {
       return;
     }
 
-    /// QUAND TOUT EST BON
-    name.clear();
-    email.clear();
-    password.clear();
-    cpassword.clear();
-    phone.clear();
+    final body = {
+      'name': sName,
+      'email': sEmail,
+      'phone': sPhone,
+      'gender': gender,
+      'password': sPassword,
+    };
 
-    showSuccessMessage(context, "Tous les champs sont valide!");
-    setState(() {
-      isSubmitted = false;
-    });
-    navigateToR(context, '/login');
-    // REDIRIGER VERS LA PAGE DE LOGIN
-    return;
+    /// APPEL à L'API
+    Map result = await apiSignUpUser(body);
+    if (result.containsKey('type')) {
+      setState(() {
+        isSubmitted = false;
+      });
+      showErrorMessage(context, result['message']);
+      //socket Error
+      if (result['type'] == 1) {
+        return;
+      }
+      //client Error
+      if (result['type'] == 2) {
+        return;
+      }
+      //other Error
+      if (result['type'] == 3) {
+        return;
+      }
+    }
+
+    if (result.containsKey('status')) {
+      setState(() {
+        isSubmitted = false;
+      });
+      if (result['status'] == false) {
+        showErrorMessage(context, result['message']);
+      } else {
+        // QUAND TOUT EST BON
+        name.clear();
+        email.clear();
+        password.clear();
+        cpassword.clear();
+        phone.clear();
+
+        showSuccessMessage(context, 'Inscription validée!');
+
+        // REDIRIGER VERS LA PAGE DE LOGIN
+        navigateToR(context, '/login');
+      }
+    }
   }
 
   // VERIFIER SI LA VARIABLE N'EST PAS VIDE

@@ -19,7 +19,7 @@ class _AccountScreenState extends State<AccountScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    isConnected(context);
+    //isConnected(context);
   }
 
   @override

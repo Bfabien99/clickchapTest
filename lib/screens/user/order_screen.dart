@@ -19,7 +19,7 @@ class _OrderScreenState extends State<OrderScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    isConnected(context);
+    //isConnected(context);
   }
 
   @override
