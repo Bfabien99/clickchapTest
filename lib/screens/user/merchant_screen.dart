@@ -26,7 +26,7 @@ class _MerchantScreenState extends State<MerchantScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appBar('M A R C H A N D S', secondaryColor, primarySoftColor),
+        appBar: appBar('M A R C H A N D S', secondaryColor, primaryColor),
           drawer: drawer(context),
           backgroundColor: Colors.grey[80],
           body: Container(

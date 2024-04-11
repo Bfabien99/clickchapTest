@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: appBar('C L I C K C H A P', secondaryColor, primarySoftColor),
+          appBar: appBar('C L I C K C H A P', secondaryColor, primaryColor),
           drawer: drawer(context),
           backgroundColor: Colors.grey[80],
           body: Container(

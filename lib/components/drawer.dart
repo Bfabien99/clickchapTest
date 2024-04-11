@@ -12,7 +12,7 @@ drawer(BuildContext context) {
           margin: const EdgeInsets.only(top: 10),
           padding: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
-            color: splashColor,
+            color: bgColor,
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20)),
@@ -60,7 +60,7 @@ drawer(BuildContext context) {
         Container(
           padding: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
-            color: splashColor,
+            color: bgColor,
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
           child: Column(
@@ -100,7 +100,7 @@ drawer(BuildContext context) {
         Container(
           padding: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
-            color: splashColor,
+            color: bgColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           ),

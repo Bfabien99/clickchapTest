@@ -2,6 +2,7 @@
 
 import 'package:clickchap_new/components/buttons.dart';
 import 'package:clickchap_new/constants/colors.dart';
+import 'package:clickchap_new/services/connectivity.dart';
 import 'package:clickchap_new/services/page_navigation.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isConnected(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
-          color: splashColor,
+          color: bgColor,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

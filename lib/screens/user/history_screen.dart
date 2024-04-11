@@ -26,7 +26,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appBar('H I S T O R I Q U E S', secondaryColor, primarySoftColor),
+        appBar: appBar('H I S T O R I Q U E S', secondaryColor, primaryColor),
           drawer: drawer(context),
           backgroundColor: Colors.grey[80],
           body: Container(

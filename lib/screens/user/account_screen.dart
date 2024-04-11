@@ -26,7 +26,7 @@ class _AccountScreenState extends State<AccountScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appBar('C O M P T E', secondaryColor, primarySoftColor),
+        appBar: appBar('C O M P T E', secondaryColor, primaryColor),
           drawer: drawer(context),
           backgroundColor: Colors.grey[80],
           body: Container(

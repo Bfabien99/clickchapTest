@@ -32,7 +32,7 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: splashColor,
+        backgroundColor: bgColor,
         // ignore: sized_box_for_whitespace
         body: Container(
           width: MediaQuery.of(context).size.width,

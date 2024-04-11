@@ -26,7 +26,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appBar('P R O F I L', secondaryColor, primarySoftColor),
+        appBar: appBar('P R O F I L', secondaryColor, primaryColor),
           drawer: drawer(context),
           backgroundColor: Colors.grey[80],
           body: Container(

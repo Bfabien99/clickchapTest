@@ -1,8 +1,14 @@
 import 'package:clickchap_new/components/my_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main()
-{
+async {
+  // Initialisations de Hive
+  await Hive.initFlutter();
+
+  // Création d'un conteneur(storage)
+  var localStorage = await Hive.openBox('localStorage');
   runApp(const MyApp());
 }
 
