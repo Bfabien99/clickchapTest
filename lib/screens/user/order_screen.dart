@@ -26,7 +26,7 @@ class _OrderScreenState extends State<OrderScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appBar('C O M M A N D E S', secondaryColor, primaryColor),
+        appBar: appBar('C O M M A N D E S'),
           drawer: drawer(context),
           backgroundColor: Colors.grey[80],
           body: Container(

@@ -30,7 +30,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
 
     return SafeArea(
       child: Scaffold(
-        appBar: appBar('P R O F I L', secondaryColor, primaryColor),
+        appBar: appBar('P R O F I L'),
         drawer: drawer(context),
         backgroundColor: Colors.grey[80],
         body: Container(

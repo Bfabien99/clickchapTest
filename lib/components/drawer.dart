@@ -8,14 +8,14 @@ drawer(BuildContext context) {
   final localStorage = Hive.box('localStorage');
   final user = localStorage.get('user');
   return Drawer(
-    backgroundColor: Colors.grey[100],
+    backgroundColor: bgColor,
     child: ListView(
       children: [
         Container(
           margin: const EdgeInsets.only(top: 10),
           padding: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
-            color: bgColor,
+            color: logoBgColor,
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20)),
@@ -34,40 +34,30 @@ drawer(BuildContext context) {
                   const Text('Home'),
                   const Icon(Icons.dashboard),
                   18,
-                  primaryColor,
-                  primaryColor,
                   true,
                   () => navigateTo(context, '/dashboard')),
               listTileRender(
                   const Text('Historiques'),
                   const Icon(Icons.history),
                   18,
-                  primaryColor,
-                  primaryColor,
                   true,
                   () => navigateTo(context, '/history')),
               listTileRender(
                   const Text('Commandes'),
                   const Icon(Icons.shopping_cart_checkout),
                   18,
-                  primaryColor,
-                  primaryColor,
                   true,
                   () => navigateTo(context, '/orders')),
               listTileRender(
                   const Text('Marchands'),
                   const Icon(Icons.sell),
                   18,
-                  primaryColor,
-                  primaryColor,
                   false,
                   () => navigateTo(context, '/merchants')),
                   listTileRender(
                   const Text('Restart'),
                   const Icon(Icons.restart_alt),
                   18,
-                  primaryColor,
-                  primaryColor,
                   false,
                   () => navigateToR(context, '/home')),
             ],
@@ -79,7 +69,7 @@ drawer(BuildContext context) {
         Container(
           padding: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
-            color: bgColor,
+            color: logoBgColor,
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
           child: Column(
@@ -90,24 +80,18 @@ drawer(BuildContext context) {
                   const Text('Profil'),
                   const Icon(Icons.person),
                   18,
-                  primaryColor,
-                  primaryColor,
                   true,
                   () => navigateTo(context, '/profil')),
               listTileRender(
                   const Text('Compte'),
                   const Icon(Icons.settings),
                   18,
-                  primaryColor,
-                  primaryColor,
                   true,
                   () => navigateTo(context, '/account')),
               listTileRender(
                   const Text('A Propos'),
                   const Icon(Icons.help),
                   18,
-                  primaryColor,
-                  primaryColor,
                   false,
                   () => navigateTo(context, '/about')),
             ],
@@ -119,7 +103,7 @@ drawer(BuildContext context) {
         Container(
           padding: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
-            color: bgColor,
+            color: logoBgColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           ),
@@ -131,16 +115,12 @@ drawer(BuildContext context) {
                   const Text('Deconnecter'),
                   const Icon(Icons.logout),
                   18,
-                  primaryColor,
-                  primaryColor,
                   true,
                   () => navigateToR(context, '/login')),
               listTileRender(
                   const Text('Laisser un Like'),
                   const Icon(Icons.logo_dev),
                   18,
-                  primaryColor,
-                  primaryColor,
                   false,
                   ()=>showSuccessMessage(context, 'Liked +1')),
             ],
@@ -151,14 +131,13 @@ drawer(BuildContext context) {
   );
 }
 
-listTileRender(Text text, Icon icon, double size, Color iconColor,
-    Color textColor, bool? divider, void Function()? onTap) {
+listTileRender(Text text, Icon icon, double size, bool? divider, void Function()? onTap) {
   return Column(
     children: [
       ListTile(
         leading: icon,
-        iconColor: Colors.black87,
-        textColor: Colors.black87,
+        iconColor: svgBgColor,
+        textColor: svgBgColor,
         titleTextStyle: TextStyle(fontSize: size, fontWeight: FontWeight.w500),
         title: text,
         onTap: onTap,

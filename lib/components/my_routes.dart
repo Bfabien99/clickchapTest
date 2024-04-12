@@ -1,5 +1,4 @@
 import 'package:clickchap_new/screens/login_screen.dart';
-import 'package:clickchap_new/screens/no_connection_screen.dart';
 import 'package:clickchap_new/screens/signup_screen.dart';
 import 'package:clickchap_new/screens/splash_screen.dart';
 import 'package:clickchap_new/screens/user/about_screen.dart';
@@ -23,5 +22,4 @@ Map<String, Widget Function(BuildContext)> myRoutes =
   '/profil' : (context) => ProfilScreen(),
   '/account' : (context) => AccountScreen(),
   '/about' : (context) => AboutScreen(),
-  '/nowifi' : (context) => NoConnectionScreen(),
 };

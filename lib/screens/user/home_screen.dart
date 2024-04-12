@@ -45,10 +45,14 @@ class _HomeScreenState extends State<HomeScreen> {
     //print(token);
     return SafeArea(
       child: Scaffold(
-          appBar: appBar('C L I C K C H A P', secondaryColor, primaryColor),
+          appBar: appBar('C L I C K C H A P'),
           drawer: drawer(context),
           backgroundColor: Colors.grey[80],
           body: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(image: Svg('assets/i-like-food.svg'), repeat: ImageRepeat.repeat,
+              opacity: .3)
+            ),
             padding: EdgeInsets.all(20),
             child: ListView(children: [
               SearchBar(
@@ -72,7 +76,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       }
                     } else {
                       setState(() {
-                        print('empty');
                         isLoading = false;
                         searched = false;
                         data = [];

@@ -1,11 +1,12 @@
+import 'package:clickchap_new/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-appBar(String title, Color backgroundColor, Color textColor){
+appBar(String title){
   return AppBar(
-    title: Text(title, style: TextStyle(color: textColor, fontWeight: FontWeight.bold),),
+    title: Text(title, style: TextStyle(color: logoBgColor, fontWeight: FontWeight.bold),),
     centerTitle: true,
-    backgroundColor: Colors.red,
+    backgroundColor: bgColor,
     elevation: 4,
-    iconTheme: const IconThemeData(color: Colors.white),
+    iconTheme: const IconThemeData(color: svgBgColor),
   );
 }

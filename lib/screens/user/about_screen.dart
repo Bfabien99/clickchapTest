@@ -26,7 +26,7 @@ class _AboutScreenState extends State<AboutScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appBar('A  P R O P O S', secondaryColor, primaryColor),
+        appBar: appBar('A  P R O P O S'),
           drawer: drawer(context),
           backgroundColor: Colors.grey[80],
           body: Container(
